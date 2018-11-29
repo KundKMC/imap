@@ -113,7 +113,9 @@ abstract class AbstractMessage extends AbstractPart
     {
         $dateHeader = $this->getHeaders()->get('date');
         if (null === $dateHeader) {
-            return null;
+            $dateHeader = $this->getHeaders()->get('maildate');
+            if (null === $dateHeader) 
+                return null;
         }
 
         $alteredValue = $dateHeader;
